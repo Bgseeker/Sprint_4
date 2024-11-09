@@ -37,7 +37,6 @@ class TestBooksCollector:
         assert collector.get_book_genre('Гордость и предубеждение и зомби') == 'Комедии'
 
     def test_get_books_with_specific_genre_return_genre_list_with_chosen_genre(self):
-        books_with_specific_genre = []
         collector = BooksCollector()
         collector.add_new_book('Крокодил Гена')
         collector.set_book_genre('Крокодил Гена', 'Мультфильмы')
@@ -47,11 +46,9 @@ class TestBooksCollector:
         assert 'Крокодил Гена' and 'Мадагаскар' in books_with_specific_genre
 
     def test_get_books_with_specific_genre_return_genre_list(self):
-        books_with_specific_genre = []
         collector = BooksCollector()
         collector.add_new_book('Аватар')
         collector.set_book_genre('Аватар', 'Приключения')
-        books_with_specific_genre = collector.get_books_with_specific_genre('Приключения')
         assert collector.get_books_with_specific_genre('Приключения') == []
 
     def test_get_books_genre_return_books_genre(self):
@@ -60,7 +57,6 @@ class TestBooksCollector:
 
     def test_get_books_for_children_add_books_to_books_for_children_list(self):
         collector = BooksCollector()
-        books_for_children = []
         collector.add_new_book('Крокодил Гена')
         collector.set_book_genre('Крокодил Гена', 'Мультфильмы')
         collector.add_new_book('Мадагаскар')
@@ -70,12 +66,10 @@ class TestBooksCollector:
 
     def test_get_books_for_children_return_empty_books_for_children_list(self):
         collector = BooksCollector()
-        books_for_children = []
         collector.add_new_book("Темная башня")
         collector.set_book_genre('Темная башня', 'Ужасы')
         collector.add_new_book('Аватар')
         collector.set_book_genre('Аватар', 'Приключения')
-        books_for_children = collector.get_books_for_children()
         assert collector.get_books_for_children() == []
 
     def test_add_book_in_favorites(self):
